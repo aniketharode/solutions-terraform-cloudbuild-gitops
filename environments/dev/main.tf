@@ -17,24 +17,35 @@ locals {
   env = "dev"
 }
 
+# provider "google" {
+#   project = "${var.project}"
+# }
+
+# module "vpc" {
+#   source  = "../../modules/vpc"
+#   project = "${var.project}"
+#   env     = "${local.env}"
+# }
+
+# module "http_server" {
+#   source  = "../../modules/http_server"
+#   project = "${var.project}"
+#   subnet  = "${module.vpc.subnet}"
+# }
+
+# module "firewall" {
+#   source  = "../../modules/firewall"
+#   project = "${var.project}"
+#   subnet  = "${module.vpc.subnet}"
+# }
+
 provider "google" {
-  project = "${var.project}"
+  project = "palace-accounting" # <-- Replace with your GCP project ID
+  region  = "asia-south1"
 }
 
-module "vpc" {
-  source  = "../../modules/vpc"
-  project = "${var.project}"
-  env     = "${local.env}"
-}
-
-module "http_server" {
-  source  = "../../modules/http_server"
-  project = "${var.project}"
-  subnet  = "${module.vpc.subnet}"
-}
-
-module "firewall" {
-  source  = "../../modules/firewall"
-  project = "${var.project}"
-  subnet  = "${module.vpc.subnet}"
+resource "google_storage_bucket" "terraform-bucket-example-11" {
+  name          = "palace-accounting-my-unique-bucket-1" # Replace with a globally unique bucket name
+  location      = "asia-south1"
+  force_destroy = true # Set to true for easy cleanup during development, remove in production
 }

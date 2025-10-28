@@ -13,9 +13,9 @@
 # limitations under the License.
 
 
-terraform {
-  backend "gcs" {
-    bucket = "palace-accounting-tfstate"
-    prefix = "env/dev"
-  }
-}
+# terraform {
+#   backend "gcs" {
+#     bucket = "palace-accounting-tfstate"
+#     prefix = "env/dev"
+#   }
+# }
