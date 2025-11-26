@@ -91,5 +91,7 @@ steps:
       fi
 # [END tf-apply]
 
+serviceAccount: 'projects/palace-accounting/serviceAccounts/vpc-terraform@palace-accounting.iam.gserviceaccount.com'
+
 options:
   logging: CLOUD_LOGGING_ONLY
