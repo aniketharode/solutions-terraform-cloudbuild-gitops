@@ -14,11 +14,11 @@
 
 
 locals {
-  network = "${element(split("-", var.subnet), 0)}"
+  network = element(split("-", var.subnet), 0)
 }
 
 resource "google_compute_instance" "http_server" {
-  project      = "${var.project}"
+  project      = var.project
   zone         = "asia-southeast1-a"
   name         = "${local.network}-apache2-instance"
   machine_type = "f1-micro"
@@ -32,7 +32,7 @@ resource "google_compute_instance" "http_server" {
   }
 
   network_interface {
-    subnetwork = "${var.subnet}"
+    subnetwork = var.subnet
 
     access_config {
       # Include this section to give the VM an external ip address
@@ -40,5 +40,5 @@ resource "google_compute_instance" "http_server" {
   }
 
   # Apply the firewall rule to allow external IPs to access this instance
-  tags = ["http-server"]
+  tags = ["http-server2"]
 }

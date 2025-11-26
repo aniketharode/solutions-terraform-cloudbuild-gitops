@@ -13,20 +13,10 @@
 # limitations under the License.
 
 
-variable "project" {}
-
-variable "project" {
-  description = "The project ID to deploy the VPN gateway into."
+output "network" {
+  value = module.vpc.network
 }
 
-variable "network" {
-  description = "The name of the network to deploy the VPN gateway into."
-}
-
-variable "peer_gcp_project" {
-  description = "The project ID of the peer VPN gateway."
-}
-
-variable "peer_network_name" {
-  description = "The network name of the peer VPN gateway."
+output "subnet" {
+  value = module.vpc.subnet
 }

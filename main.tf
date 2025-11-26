@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2022 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,21 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-variable "project" {}
-
-variable "project" {
-  description = "The project ID to deploy the VPN gateway into."
-}
-
-variable "network" {
-  description = "The name of the network to deploy the VPN gateway into."
-}
-
-variable "peer_gcp_project" {
-  description = "The project ID of the peer VPN gateway."
-}
-
-variable "peer_network_name" {
-  description = "The network name of the peer VPN gateway."
+resource "random_string" "shared_secret" {
+  length  = 32
+  special = true
 }
